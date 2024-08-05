@@ -10,9 +10,15 @@ pipeline {
      steps {
         echo "This is Build stage"
 
+       }
+   }
+
       stage ('DEPLOY') {
      steps {
         echo "This is Build stage"
+
+        }
+   }
 
      }
    }
