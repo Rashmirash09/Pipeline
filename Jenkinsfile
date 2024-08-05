@@ -35,7 +35,7 @@ pipeline {
       }
     }
         
-       parallel {
+      
         stage ('SERVER 2')  {
       steps {
         echo "This is Deploy to server2" 
@@ -43,7 +43,7 @@ pipeline {
       }
         }
          
-      }  
+        
     }  
   } 
 
