@@ -32,6 +32,8 @@ pipeline {
 
       }
         }
+      }
+    }
         
        parallel {
         stage ('SERVER 2')  {
