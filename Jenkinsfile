@@ -1,19 +1,28 @@
 pipeline {
   agent any	
   stages {
-
+    
     stage ('BUILD') {
       steps {
         echo "This is Build stage" 
               }  
     }  
     
-    stage ('TEST') {
-      steps {
-        echo "This is Test stage" 
-        
+    stage ('TEST PARALLEL') {
+      parallel {
+        stage ('TEST ON CHROME') {
+          steps {
+        echo "This is Test on chrome" 
+          }
+        }
+
+        stage ('TEST ON SAFARI') {
+          steps {
+        echo "This is Test on SAFARI" 
+          }
+        }
       }  
-    }  
+    }   
     
     stage ('DEPLOY') {
       steps {
