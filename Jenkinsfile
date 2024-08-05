@@ -25,9 +25,22 @@ pipeline {
     }   
     
     stage ('DEPLOY') {
+      parallel {
+        stage ('SERVER 1')  {
       steps {
-        echo "This is Deploy stage" 
+        echo "This is Deploy to server1" 
+
+      }
+        }
         
+       parallel {
+        stage ('SERVER 2')  {
+      steps {
+        echo "This is Deploy to server2" 
+
+      }
+        }
+         
       }  
     }  
   } 
