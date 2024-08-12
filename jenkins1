@@ -1,46 +1,32 @@
-pipeline { 
-  agent any;
-    stages { 
-       stage ('BUILD') { 
-          steps {
-            echo "This is build stage"
-         }
-      }
+pipeline {
+    agent none
 
- post {
+    stages {
+        stage('Parallel Execution') {
+            parallel {
+                stage('Stage on Slave1') {
+                    agent { label 'Slave1' }
+                    steps {
+                        echo 'Running on Slave1'
+                        // Add your commands here
+                    }
+                }
+                stage('Stage on Slave2') {
+                    agent { label 'Slave2' }
+                    steps {
+                        echo 'Running on Slave2'
+                        // Add your commands here
+                    }
+                }
+            }
+        }
+    }
+
+    post {
         always {
-            echo 'Pipeline completed'
-        }
-        success {
-            mail to: 'team@example.com', subject: 'The Pipeline succeeded', body: 'The pipeline has completed successfully.'
-        }
-        failure {
-            echo 'The pipeline failed'
-        }
-        unstable {
-            echo 'The pipeline is unstable'
-        }
-        changed {
-            echo 'The result of the pipeline has changed from the last run'
+            echo 'This will always run, after the parallel stages are done.'
         }
     }
 }
 
-
-
-      stage ('DEPLOY') { 
-          parallel { Label 'Slave1' }
-            steps {
-               echo "This is deploy stage"
-   }
-}
-        stage ('TEST') { 
-            steps {
-               echo "This is test stage"
-   }
-}
-
-   }
-}
-    
 
