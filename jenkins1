@@ -20,9 +20,26 @@ pipeline {
         }
     }
 
-    post {
+     post {
         always {
-            echo 'This will always run, after the parallel stages are done.'
+            echo 'Pipeline completed'
+        }
+        success {
+            mail to: 'team@example.com', subject: 'The Pipeline succeeded', body: 'The pipeline has completed successfully.'
+        }
+        failure {
+            echo 'The pipeline failed'
+        }
+        unstable {
+            echo 'The pipeline is unstable'
+        }
+        changed {
+            echo 'The result of the pipeline has changed from the last run'
+        }
+    }
+}
+
+
         }
     }
 }
