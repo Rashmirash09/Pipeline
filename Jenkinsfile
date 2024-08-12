@@ -1,7 +1,6 @@
 pipeline {
   agent any	
   stages {
-    
     stage ('BUILD') {
       steps {
         echo "This is Build stage" 
@@ -10,15 +9,15 @@ pipeline {
     
     stage ('TEST PARALLEL') {
       parallel {
-        stage ('TEST ON CHROME') {
+        stage ('TEST1') {
           steps {
-        echo "This is Test on chrome" 
+        echo "This is Test1" 
           }
         }
 
-        stage ('TEST ON SAFARI') {
+        stage ('TEST2') {
           steps {
-        echo "This is Test on SAFARI" 
+        echo "This is Test2" 
           }
         }
       }  
