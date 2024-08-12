@@ -7,13 +7,11 @@ pipeline {
                 stage('Stage on Slave1') {
                     steps {
                         echo 'Running on Slave1'
-                        // Add your commands here
                     }
                 }
                 stage('Stage on Slave2') {
                     steps {
                         echo 'Running on Slave2'
-                        // Add your commands here
                     }
                 }
             }
@@ -40,8 +38,8 @@ pipeline {
 }
 
 
-        }
-    }
-}
+        
+    
+
 
 
