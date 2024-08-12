@@ -3,12 +3,30 @@ pipeline {
     stages { 
        stage ('BUILD') { 
           steps {
-             sh '''
-                sleep 5
             echo "This is build stage"
-                '''
          }
       }
+
+ post {
+        always {
+            echo 'Pipeline completed'
+        }
+        success {
+            mail to: 'team@example.com', subject: 'The Pipeline succeeded', body: 'The pipeline has completed successfully.'
+        }
+        failure {
+            echo 'The pipeline failed'
+        }
+        unstable {
+            echo 'The pipeline is unstable'
+        }
+        changed {
+            echo 'The result of the pipeline has changed from the last run'
+        }
+    }
+}
+
+
 
       stage ('DEPLOY') { 
           parallel { Label 'Slave1' }
