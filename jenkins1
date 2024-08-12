@@ -5,14 +5,12 @@ pipeline {
         stage('Parallel Execution') {
             parallel {
                 stage('Stage on Slave1') {
-                    agent { label 'Slave1' }
                     steps {
                         echo 'Running on Slave1'
                         // Add your commands here
                     }
                 }
                 stage('Stage on Slave2') {
-                    agent { label 'Slave2' }
                     steps {
                         echo 'Running on Slave2'
                         // Add your commands here
