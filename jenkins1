@@ -11,6 +11,7 @@ pipeline {
       }
 
       stage ('DEPLOY') { 
+          parallel { Label 'Slave1' }
             steps {
                echo "This is deploy stage"
    }
